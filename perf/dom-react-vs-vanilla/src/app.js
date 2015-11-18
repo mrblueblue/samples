@@ -160,6 +160,6 @@ var FlickrImages = React.createClass({
 });
 
 // Fire up React.
-React.render(
+ReactDOM.render(
   <FlickrImages />, main
 );
