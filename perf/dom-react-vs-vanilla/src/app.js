@@ -32,11 +32,16 @@ var lastJSStartExecutionTime = 0;
  * to get set.
  */
 var FlickrImage = React.createClass({
+
+  shouldComponentUpdate: function(nextProps){
+    return this.cache !== moment.unix(nextProps.image.lastUpdate).fromNow();
+  },
+
   render: function() {
 
     // Figure out how long ago this photo was taken.
     var fromNow = moment.unix(this.props.image.lastUpdate).fromNow();
-
+    this.cache = fromNow;
     // Render away!
     /* jshint ignore:start */
     return (
